@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wilco.opesui.financeplan_modules.LifeStyleDept">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_LifeStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#8C9EFF"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dashBoardView"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#5bcef1">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000" />
+
+
+                    <TextView
+                        android:id="@+id/lender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Lender"
+                        android:textColor="#000000"
+                        android:textSize="16dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/lender"
+                        android:padding="5dp"
+                        android:text="Balance"
+                        android:textColor="#000000"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/interest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/balance"
+                        android:padding="5dp"
+                        android:text="Interest rate(%)"
+                        android:textColor="#000000"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/monthly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/interest"
+                        android:padding="5dp"
+                        android:text="Monthly Repayment"
+                        android:textColor="#000000"
+                        android:textSize="16dp" />
+
+                    <View
+                        android:id="@+id/bottomLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/monthly"
+                        android:background="#000" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#bcf1f7"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    >
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000"
+                        />
+
+                    <TextView
+                        android:id="@+id/vvvv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="vvvv"
+                        android:textColor="#000000"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/dollar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/doll"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignStart="@+id/doll"
+                        android:padding="5dp"
+                        android:text="$212,121"
+                        android:textColor="#000000"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/percen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_toRightOf="@+id/dollar"
+                        android:padding="5dp"
+                        android:text="1%"
+                        android:textColor="#000000"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/dollSec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="75dp"
+                        android:layout_marginStart="75dp"
+                        android:layout_toRightOf="@+id/percen"
+                        android:padding="5dp"
+                        android:text="$303"
+                        android:textColor="#000000"
+                        android:textSize="14dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/vvvv"
+                        android:background="#000000"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/totDebt"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/vvvv"
+                        android:padding="5dp"
+                        android:text="Total debt"
+                        android:textColor="#000000"
+                        android:textSize="14dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/doll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dollar"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_toRightOf="@+id/totDebt"
+                        android:padding="5dp"
+                        android:text="$212,121"
+                        android:textColor="#000000"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/none"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/percen"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_toRightOf="@+id/doll"
+                        android:padding="5dp"
+                        android:text="N/A"
+                        android:textColor="#000000"
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dollSec"
+                        android:layout_marginLeft="65dp"
+                        android:layout_marginStart="65dp"
+                        android:layout_toRightOf="@+id/none"
+                        android:padding="5dp"
+                        android:text="$303"
+                        android:textColor="#000000"
+                        android:textSize="14dp"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000"
+                        android:id="@+id/viewEnd"
+                        android:layout_below="@+id/totDebt"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/linechart"
+                android:layout_below="@+id/viewEnd"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="350dp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.AppBarLayout>

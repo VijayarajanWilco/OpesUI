@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wilco.opesui.dashboard.DashBoard">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:id="@+id/dashBoardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/welDashBoard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Welcome to your dashboard"
+                android:textColor="#FFFFFF"
+                android:textSize="40dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/welDashBoard"
+                android:layout_marginTop="20dp"
+                android:text="We've Chosen your starting goals based on your 5 answers."
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/goalClick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/answer"
+                android:layout_marginTop="20dp"
+                android:text="Let's get started by clicking on a goal below."
+                android:textColor="#FFFFFF"
+                android:textSize="30dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/recomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearWelcome">
+
+            <TextView
+                android:id="@+id/recoment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:padding="10dp"
+                android:text="We recommend starting with these goals:
+Retirement income and Super"
+                android:textColor="#2e2d2d"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/goalsFound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recomLayout"
+            android:layout_margin="25dp"
+            android:background="@drawable/new_rounded_shape">
+
+            <TextView
+                android:id="@+id/foundGoals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Foundation goals"
+                android:textColor="#0d831b"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/lifeStyle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/foundGoals"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/lifecycledept" />
+
+            <Button
+                android:id="@+id/startLife"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lifeStyle"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="Start Goal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/emergency"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignEnd="@+id/startSuper"
+                android:layout_alignRight="@+id/startSuper"
+                android:layout_below="@+id/foundGoals"
+                android:background="@drawable/emergency" />
+
+            <Button
+                android:id="@+id/startEmer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lifeStyle"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/startLife"
+                android:background="@drawable/rounded_button"
+                android:text="Start Goal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/protec"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/startLife"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/protection" />
+
+            <Button
+                android:id="@+id/startProtec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/protec"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="Start Goal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/superImg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/startEmer"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/lifeStyle"
+                android:background="@drawable/superimg" />
+
+            <Button
+                android:id="@+id/startSuper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/superImg"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/startProtec"
+                android:background="@drawable/rounded_button"
+                android:text="Start Goal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/startProtec" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:id="@+id/homeSaving"
+            android:layout_below="@+id/goalsFound"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/new_rounded_shape">
+
+            <TextView
+                android:id="@+id/savingGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Home and Savings goals"
+                android:textColor="#c2560d"
+                android:textSize="30dp" />
+
+            <ImageView
+                android:id="@+id/saveHomeImg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/savingGoal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/lifecycledept" />
+
+            <Button
+                android:id="@+id/startSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/saveHomeImg"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="Start Goal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/mortageSave"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/savingGoal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/saveHomeImg"
+                android:background="@drawable/mortage" />
+
+            <Button
+                android:id="@+id/startMortage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mortageSave"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/startSave"
+                android:background="@drawable/rounded_button"
+                android:text="Start Goal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/newSaving"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/savingGoal"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/mortageSave"
+                android:background="@drawable/savehome" />
+
+            <Button
+                android:id="@+id/createGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mortageSave"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/startMortage"
+                android:background="@drawable/rounded_button"
+                android:text="Create a Goal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/startSave"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/retirement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeSaving"
+            android:layout_margin="25dp"
+            android:background="@drawable/new_rounded_shape">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:id="@+id/retireText"
+                android:textColor="#b157ca"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:text="Retirement and Investing"
+                />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/retireText"
+                android:src="@drawable/retirement"
+                android:layout_marginLeft="30dp"
+                android:id="@+id/retireImg"
+                android:layout_marginTop="50dp"
+                />
+
+            <Button
+                android:id="@+id/startRetire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/retireImg"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="Start Goal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/retireText"
+                android:src="@drawable/investment"
+                android:layout_toRightOf="@+id/retireImg"
+                android:layout_marginLeft="110dp"
+                android:id="@+id/investImg"
+                android:layout_marginTop="50dp"
+                />
+
+            <Button
+                android:id="@+id/startInvest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/investImg"
+                android:layout_toRightOf="@+id/startRetire"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_button"
+                android:text="Add invesments"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/startRetire"
+                />
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+ </LinearLayout>
+
+    </ScrollView>
+</android.support.design.widget.AppBarLayout>

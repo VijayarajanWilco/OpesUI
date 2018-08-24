@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">OpesUI</string>
+
+    <string name="sign_up_label">Sign Up</string>
+    <string name="log_in_label">Log In</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="confirm_hint">Confirm Password</string>
+
+    <string name="skip">
+
+        <u>Skip</u>
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="agree">I agree to receive all communications from you in electronic format. This includes receiving the Financial Services Guide (FSG) and Statement of Advice (SoA) via an email link.</string>
+</resources>

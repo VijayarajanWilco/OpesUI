@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    app:navigationIcon="@drawable/toggle"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/mapPlan"
+        android:icon="@drawable/ic_launcher_background"
+android:iconTint="@color/colorAccent"
+        android:title="User Finance Plans" />
+
+    <item android:id="@+id/dashBoard"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Dash Board" />
+
+    <item android:id="@+id/logout"
+           android:title="Logout" />
+
+</menu>
