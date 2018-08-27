@@ -3,20 +3,17 @@ package com.wilco.opesui.mail;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StrictMode;
-import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -26,32 +23,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.wilco.opesui.FinancialPlanning;
 import com.wilco.opesui.R;
-import com.wilco.opesui.mapmyplan.MapMyPlan;
-import com.wilco.opesui.mapmyplan.QuesAnsModel;
 
-import org.w3c.dom.Document;
+import com.itextpdf.*;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class SendEmail extends AppCompatActivity implements Serializable {
@@ -66,7 +54,7 @@ public class SendEmail extends AppCompatActivity implements Serializable {
 
     String to = "vijayarajan1003@gmail.com";
 
-    public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile (
+    public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-" +
                     "\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\" +
                     "x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[" +
@@ -102,11 +90,11 @@ public class SendEmail extends AppCompatActivity implements Serializable {
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString("selection");
 
-         getIntent().removeExtra("selection");
+        getIntent().removeExtra("selection");
 
-        if (message!=null) {
-            message = message.replaceAll("\\p{P}+\n","");
-            // createandDisplayPdf(message);
+        if (message != null) {
+            message = message.replaceAll("\\p{P}+\n", "");
+            createandDisplayPdf(message);
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("application/pdf");
             shareIntent.putExtra(Intent.EXTRA_TEXT, message);
@@ -115,11 +103,11 @@ public class SendEmail extends AppCompatActivity implements Serializable {
 
         }
 
-        if(Build.VERSION.SDK_INT>=24){
-            try{
+        if (Build.VERSION.SDK_INT >= 24) {
+            try {
                 Method m = StrictMode.class.getMethod("createandDisplayPdf");
                 m.invoke(null);
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -170,8 +158,7 @@ public class SendEmail extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View v) {
 
-                if (checkName() && checkPhoneNum())
-                         {
+                if (checkName() && checkPhoneNum()) {
 
                     String str_to = to;
                     //  String str_message = selectionAns.getText().toString();
@@ -191,7 +178,11 @@ public class SendEmail extends AppCompatActivity implements Serializable {
                                 @Override
                                 public void run() {
 
+                                    createandDisplayPdf(messageText);
                                     Toast.makeText(c, "Sending... Please wait", Toast.LENGTH_LONG).show();
+
+                                    Intent intent1 = new Intent(SendEmail.this, FinancialPlanning.class);
+                                    startActivity(intent1);
                                 }
                             });
                             sendEmail(str_to, str_subject, finalMessageText);
@@ -208,56 +199,102 @@ public class SendEmail extends AppCompatActivity implements Serializable {
                         Toast.makeText(c, "There are empty fields.", Toast.LENGTH_LONG).show();
                     }
                 }
-                Intent intent1 = new Intent(SendEmail.this, FinancialPlanning.class);
-                startActivity(intent1);
+
             }
         });
     }
 
     public void createandDisplayPdf(String text) {
-        com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
+
         try {
-            String path = Environment.getDownloadCacheDirectory().getClass() + "/Dir";
-         File dir = new File(path);
-            if(!dir.exists())
-                dir.mkdirs();
-            File file = new File(dir, "newFile.pdf");
-            FileOutputStream fOut = new FileOutputStream(file);
-            PdfWriter.getInstance(doc, fOut);
-            doc.open();
+            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/WilcoSource";
+
+            File dirFile = new File(path);
+            if (!dirFile.exists())
+                dirFile.mkdirs();
+
+            // Create a document
+            Document document = new Document();
+
+            File fileDest = new File(dirFile, "newFile.pdf");//System.currentTimeMillis()
+
+            FileOutputStream fileOutputStream = new FileOutputStream(fileDest);
+
+            PdfWriter.getInstance(document, fileOutputStream);
+
+            //open to write a document
+            document.open();
+
+
+            // Document Settings
+            document.setPageSize(PageSize.A4);
+            document.addCreationDate();
+            document.addAuthor("Wilco Source");
+            document.addCreator("XYZ");
+
             Paragraph p1 = new Paragraph(text);
-            Font paraFont= new Font(Font.FontFamily.COURIER);
+            Font paraFont = new Font(Font.FontFamily.COURIER);
             p1.setAlignment(Paragraph.ALIGN_CENTER);
             p1.setFont(paraFont);
 
-            doc.add(p1);
+            //add paragraph to document
+            document.add(p1);
 
-        }
-        catch (DocumentException de) {
+            document.close();
+        } catch (DocumentException de) {
             Log.e("PDFCreator", "DocumentException:" + de);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.e("PDFCreator", "ioException:" + e);
-        }
-        finally {
+        }/* finally {
             doc.close();
-        }
+        }*/
 
-       viewPdf("newFile.pdf", "Dir");
+        viewPdf("newFile.pdf", "WilcoSource");
     }
 
     // Method for opening a pdf file
     private void viewPdf(String file, String directory) {
-
-        File pdfFile = new File(Environment.getExternalStorageDirectory() + "/" +
+//        Environment.getExternalStorageDirectory().getAbsolutePath()
+        File pdfFile = new File(getExternalFilesDir(Environment.getExternalStorageDirectory().getAbsolutePath()), "/" +
                 directory + "/" + file);
-        Uri path = Uri.fromFile(pdfFile);
 
-        // Setting the intent for pdf reader
-        Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-        pdfIntent.setDataAndType(path, "application/pdf");
-        pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        if (pdfFile.exists()) {
+            Uri path = Uri.fromFile(pdfFile);
 
+            // Setting the intent for pdf reader
+            Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
+            pdfIntent.setDataAndType(path, "application/pdf");
+            pdfIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Intent intent = Intent.createChooser(pdfIntent, "Open File");
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException e) {
+                        Toast.makeText(SendEmail.this, "Can't read pdf file", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+
+    }
+
+    private static boolean isExternalStorageReadOnly() {
+        String extStorageState = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(extStorageState)) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isExternalStorageAvailable() {
+        String extStorageState = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(extStorageState)) {
+            return true;
+        }
+        return false;
     }
 
     private void sendEmail(final String to, final String subject, final String finalMessageText) {
@@ -269,7 +306,7 @@ public class SendEmail extends AppCompatActivity implements Serializable {
                 try {
                     GMailSender sender = new GMailSender(GMail,
                             GMailPass);
-                    sender.sendMail("Mobile Number : "+subject,
+                    sender.sendMail("Mobile Number : " + subject,
                             finalMessageText,
                             GMail,
                             to);

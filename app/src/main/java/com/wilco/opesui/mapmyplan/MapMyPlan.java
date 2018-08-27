@@ -108,7 +108,7 @@ public class MapMyPlan extends AppCompatActivity implements View.OnClickListener
                 }
 
                 Intent intent = new Intent(MapMyPlan.this, SendEmail.class);
-                ht.replace(",", "");
+                //ht.replace(",", "");
                 intent.putExtra("selection", ht.toString());
 
                 startActivity(intent);
